@@ -4,9 +4,7 @@ from torchvision import models
 from torchvision.models import ResNet18_Weights
 
 # Locate dataset
-path = os.getcwd()
-path = os.path.abspath(os.path.join(path, '..'))
-project_root = os.path.abspath(os.path.join(path, '..'))
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 dataset_path = os.path.join(project_root, 'datasets', 'character_classification', 'raw')
 
