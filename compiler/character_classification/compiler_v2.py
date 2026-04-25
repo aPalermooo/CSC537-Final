@@ -4,13 +4,17 @@ import torch
 from torch.utils.data import random_split, Dataset
 from torchvision import datasets
 from torchvision.transforms import v2
-from compiler.compiler_helper.cnn_functions import calc_norm, create_dataloader
-from compiler.compiler_helper.CharacterDataset import CharacterDataset
-
+from compiler.compiler_helper.cnn_functions_v2 import calc_norm, create_dataloader
+from compiler.compiler_helper.CharacterDataset_v2 import CharacterDataset
 
 """
-Notes 
+Notes:
+
+Increase to augmentation
+Force black and white
+
 """
+
 
 """GLOBAL VARIABLES"""
 
@@ -26,22 +30,22 @@ TARGET = os.path.join(project_root, 'datasets', 'character_classification', 'raw
 
 def compile_data():
 
-
-    data_mean, data_std = calc_norm(TARGET)
-
+    data_mean = torch.tensor([0.5])
+    data_std = torch.tensor([0.5])
 
     # Random Augmentation of Images
     train_transform = v2.Compose([
-        v2.ToImage(),
+        v2.Grayscale(num_output_channels=1),
         v2.RandomRotation(degrees=15),
-        v2.RandomPerspective(distortion_scale=0.5,),
-        v2.ColorJitter(brightness=0.1, contrast=0.1, saturation=0.1, hue=0.1),
+        v2.RandomPerspective(distortion_scale=0.3),
+        v2.PILToTensor(),
         v2.ToDtype(torch.float32, scale=True),
         v2.Normalize(mean=data_mean.tolist(), std=data_std.tolist()),
     ])
 
     test_transform = v2.Compose([
-        v2.ToImage(),
+        v2.Grayscale(num_output_channels=1),
+        v2.PILToTensor(),
         v2.ToDtype(torch.float32, scale=True),
         v2.Normalize(mean=data_mean.tolist(), std=data_std.tolist()),
     ])

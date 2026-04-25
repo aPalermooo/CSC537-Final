@@ -8,7 +8,8 @@ class CharacterDataset(Dataset):
 
     def __getitem__(self, index):
         img, target = self.subset[index]
-        return self.transform(img), target
+        img = self.transform(img)
+        return img, target
 
     def __len__(self):
         return len(self.subset)
