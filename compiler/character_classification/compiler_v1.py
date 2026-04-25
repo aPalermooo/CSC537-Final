@@ -1,36 +1,19 @@
 import os
 
 import torch
-from torch.utils.data import DataLoader, Subset, random_split, Dataset
-from torchvision import datasets, transforms
+from torch.utils.data import random_split, Dataset
+from torchvision import datasets
 from torchvision.transforms import v2
+from compiler.compiler_helper.cnn_functions import calc_norm, create_dataloader
+from compiler.compiler_helper.CharacterDataset import CharacterDataset
 
 """GLOBAL VARIABLES"""
 
-
-
 # Get Dataset dir
+
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 TARGET = os.path.join(project_root, 'datasets', 'character_classification', 'raw')
-DUMP = os.path.join(project_root, 'datasets', 'character_classification', 'pickled')
-
-""""""
-
-""" DATASET CLASS"""
-
-class CharacterDataset(Dataset):
-    def __init__(self, subset, transform):
-        self.subset = subset
-        self.transform = transform
-
-    def __getitem__(self, index):
-        img, target = self.subset[index]
-        return self.transform(img), target
-
-    def __len__(self):
-        return len(self.subset)
-
 
 """"""
 
@@ -75,11 +58,11 @@ def compile_data():
     test_set = CharacterDataset(test_set, test_transform)
 
     # Assemble Dataloaders
-    training_loader = create_dataloader(train_set, shuffle=True)
+    train_loader = create_dataloader(train_set, shuffle=True)
     val_loader = create_dataloader(val_set)
     test_loader = create_dataloader(test_set)
 
-    return training_loader, val_loader, test_loader
+    return train_loader, val_loader, test_loader
 
 
 if __name__ == '__main__':
