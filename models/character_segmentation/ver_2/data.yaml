@@ -1,4 +1,4 @@
-path: C:/Users/apale/PycharmProjects/CSC537Final/datasets/character_segmentation
+path: ../../../datasets/character_segmentation
 train: images/train
 val: images/val
 
