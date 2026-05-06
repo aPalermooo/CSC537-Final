@@ -9,7 +9,7 @@ This project focuses on completing a full pipeline that processes an image of a 
 characters on its license plate into their ASCII representation. This technology has wide applications in traffic regulation,
 namely administering toll fees, administering speeding tickets, and surveillance.
 
-----
+---
 
 ## Approach
 
@@ -20,6 +20,7 @@ This problem can be broken down into 3 phases:
 
 To tackle each problem, a model was designed and iterated using different architectures for each phase. They are separated
 into their own respective directories and designed to be interchangeable in the final pipeline implementation.
+
 ---
 
 ## Replication
@@ -60,19 +61,19 @@ project, each one was downloaded as a zip file and their contents were dumped in
 
 > **License Plate Segmentation/Complete Pipeline:**
 > [Dataset Link](https://www.kaggle.com/datasets/adilshamim8/license-plate-recognition)  
-> By: Adil Shamim
-> 10,000 Images of cars (with license plates) from various regions around the world.  
-> Have variation in lighting conditions and camera qualities to provide better generalization
+> By: Adil Shamim   
+> 10,000 Images of cars (with license plates) from various regions around the world.    
+> Have variation in lighting conditions and camera qualities to provide better generalization  
 > 
 > **Character Segmentation:**
 > [Dataset Link](https://www.kaggle.com/datasets/francescopettini/license-plate-characters-detection-ocr)  
-> By: Francesco Pettini
-> 209 images containing 2026 bounding boxes and labeled characters
+> By: Francesco Pettini  
+> 209 images containing 2026 bounding boxes and labeled characters  
 > 
 > **Character Classification:**
 > [Dataset Link](https://www.kaggle.com/datasets/aladdinss/license-plate-digits-classification-dataset)  
-> By: Jelal  
-> 35,000 images of characters found on license place labeled by ASCII representation (1,000 images per class)
+> By: Jelal    
+> 35,000 images of characters found on license place labeled by ASCII representation (1,000 images per class)  
 
 
 ### Execution
@@ -80,6 +81,6 @@ project, each one was downloaded as a zip file and their contents were dumped in
 For assembling a pipeline the following stages need to be complete  
 Running the target compiler for each phase → Running the training loop for each prescribed model → Running the final pipeline file.  
   
-To run a specific file call it from the project root directory as a module ex: 
+To run a specific file call it from the project root directory as a module ex:   
 ``python3 -m training.character_classification.training_loop_v1``  
 substituting the package name out for the intended file you need to run
