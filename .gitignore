@@ -2,7 +2,8 @@
 datasets/**
 !datasets/*/
 !datasets/*/raw/
-!datasets/.gitkeep
+!datasets/*/.gitkeep
+!datasets/*/raw/.gitkeep
 
 results/**
 !results/*/
