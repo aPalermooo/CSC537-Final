@@ -2,8 +2,10 @@
 datasets/**
 !datasets/*/
 !datasets/*/raw/
+!results/.gitkeep
 
 results/**
 !results/*/
+!results/.gitkeep
 
 /figures/
