@@ -1,3 +1,9 @@
-/datasets/
-/results/
+
+datasets/**
+!datasets/*/
+!datasets/*/raw/
+
+results/**
+!results/*/
+
 /figures/
